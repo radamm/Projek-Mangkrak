@@ -1,0 +1,165 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    line-height: 1.6;
+    background-color: #f0f8ff; /* Light background color */
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1e90ff; /* Bright blue for navbar */
+    color: #fff;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 1.5rem;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #ffb400; /* Hover effect: orange-yellow */
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-section .hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-section .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-section .cta-button {
+    padding: 1rem 2rem;
+    background-color: #ffb400; /* Bright orange-yellow */
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.hero-section .cta-button:hover {
+    background-color: #ff6700; /* Darker orange on hover */
+    transform: scale(1.05);
+}
+
+/* Features Section */
+.features-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.feature {
+    max-width: 200px;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-10px); /* Lift up effect on hover */
+}
+
+/* Courses Section */
+.courses-section {
+    padding: 4rem 2rem;
+    background-color: #ffe4b5; /* Light orange for background */
+    text-align: center;
+}
+
+.courses-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.course {
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s;
+    border-radius: 8px;
+}
+
+.course:hover {
+    transform: translateY(-10px); /* Lift up effect on hover */
+    background-color: #ffb400; /* Change color on hover */
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: 4rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.testimonial {
+    margin: 2rem 0;
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 2rem;
+    background-color: #87cefa; /* Light blue for about section */
+    text-align: center;
+}
+
+/* Footer Section */
+.footer {
+    padding: 2rem;
+    background-color: #1e90ff;
+    color: #fff;
+    text-align: center;
+}
+
+.footer .social-media a {
+    margin: 0 1rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .social-media a:hover {
+    color: #ffb400; /* Hover effect: orange-yellow */
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV dan Tabel Interaktif</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <style>
+        /* Mengatur margin dan padding untuk tabel */
+        table.dataTable {
+            margin-top: 20px;
+        }
+        
+        /* Styling untuk dropdown dan input search */
+        .dataTables_length, .dataTables_filter {
+            margin-bottom: 15px;
+        }
+        
+        /* Styling untuk tombol pagination */
+        .dataTables_paginate {
+            margin-top: 15px;
+        }
+        
+        /* Mengatur posisi elemen search dan dropdown */
+        .dataTables_wrapper .dataTables_length, 
+        .dataTables_wrapper .dataTables_filter {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    
+</head>
+<body>
+
+<h2>Upload CSV dan Tabel Interaktif</h2>
+<input type="file" id="csvFileInput" accept=".csv" />
+<br><br>
+
+<table id="csvTable" class="display" style="width:100%">
+    <thead id="tableHead">
+        <!-- Header tabel akan diisi oleh JavaScript -->
+    </thead>
+    <tbody id="tableBody">
+        <!-- Isi tabel akan diisi oleh JavaScript -->
+    </tbody>
+</table>
+
+<script>
+document.getElementById('csvFileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const text = e.target.result;
+            displayCSV(text);
+        };
+        reader.readAsText(file);
+    }
+});
+
+// Fungsi untuk menampilkan CSV dalam tabel
+function displayCSV(csvText) {
+    const rows = csvText.split('\n').map(row => row.split(','));
+    const tableHead = document.getElementById('tableHead');
+    const tableBody = document.getElementById('tableBody');
+
+    // Reset tabel
+    tableHead.innerHTML = '';
+    tableBody.innerHTML = '';
+
+    // Tambahkan header dari baris pertama CSV
+    const headerRow = rows[0];
+    const headerHTML = headerRow.map(header => `<th>${header.trim()}</th>`).join('');
+    tableHead.innerHTML = `<tr>${headerHTML}</tr>`;
+
+    // Tambahkan isi tabel
+    rows.slice(1).forEach(row => {
+        const rowHTML = row.map(cell => `<td>${cell.trim()}</td>`).join('');
+        tableBody.innerHTML += `<tr>${rowHTML}</tr>`;
+    });
+
+    // Hapus DataTable jika sudah ada (untuk menghindari error saat reload)
+    if ($.fn.DataTable.isDataTable('#csvTable')) {
+        $('#csvTable').DataTable().destroy();
+    }
+
+    // Inisialisasi DataTables setelah data CSV dimuat
+    $('#csvTable').DataTable();
+}
+</script>
+
+</body>
+</html>
